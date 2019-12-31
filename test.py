@@ -2,31 +2,56 @@ import pygame.mixer
 from pygame.mixer import Sound
 from gpiozero import Button
 from signal import pause
-#import RPi.GPIO as GPIO
-import os
+import time, os
 
 pygame.mixer.pre_init(16000, -16, 2, 2048)
 
 pygame.mixer.init()
-pygame.mixer.music.set_volume(1.0)
-sound_pins = {
-    3: Sound("/home/pi/wavs/w_laser1.wav"), # up left
-    2: Sound("/home/pi/wavs/w_power.wav"), # down middle and left
-    23: Sound("/home/pi/wavs/w_rpg.wav"), # down right
-    24: Sound("/home/pi/wavs/w_missile.wav"), # up middle and right
-}
+pygame.mixer.music.set_volume(0.5)
 
-buttons = [Button(pin) for pin in sound_pins]
+laser = Sound("/home/pi/space/wavs/w_laser1.wav")
+power = Sound("/home/pi/space/wavs/w_power.wav") 
+rpg = Sound("/home/pi/space/wavs/w_rpg.wav")
+missile = Sound("/home/pi/space/wavs/w_missile.wav")
 
-for button in buttons:
-    sound = sound_pins[button.pin.number]
-    button.when_pressed = sound.play
-#    sound.play()
+holdTime = 2
+offGPIO = 3
 
-#holdTime = 2
-#offGPIO = 11
-#shutdownButton = Button(offGPIO, hold_time=holdTime)
-#shutdownButton.when_pressed = os.system("sudo shutdown -h now")
+def shutdown():
+    # play some shutdown sound
+    # to be added
+    # give it a chance to play for one second
+    time.sleep(1)
+    # shutdown for real
+    #os.system("sudo poweroff")
+    os.system("sudo shutdown -h now")
+
+def press_laser():
+    # start playing
+    laser.play()
+
+def press_power():
+    # start playing
+    power.play()
+
+def press_rpg():
+    rpg.play()
+
+def press_missile():
+    missile.play()
+
+
+btn1 = Button(11)
+btn2 = Button(2)
+btn3 = Button(23)
+btn4 = Button(24)
+btnOff = Button(offGPIO, hold_time=holdTime)
+
+btn1.when_pressed = press_laser
+btn2.when_pressed = press_power
+btn3.when_pressed = press_rpg
+btn4.when_pressed = press_missile
+btnOff.when_held = shutdown
 
 pause()
 
