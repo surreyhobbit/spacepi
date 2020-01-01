@@ -13,18 +13,29 @@ laser = Sound("/home/pi/space/wavs/w_laser1.wav")
 power = Sound("/home/pi/space/wavs/w_power.wav") 
 rpg = Sound("/home/pi/space/wavs/w_rpg.wav")
 missile = Sound("/home/pi/space/wavs/w_missile.wav")
+melting = Sound("/home/pi/space/wavs/ImMeltingMelting.ogg")
+nohome = Sound("/home/pi/space/wavs/NoPlaceLikeHome.ogg")
 
-holdTime = 2
+holdTime = 6
 offGPIO = 3
 
 def shutdown():
     # play some shutdown sound
-    # to be added
+    melting.stop()
+    nohome.play()
     # give it a chance to play for one second
     time.sleep(1)
     # shutdown for real
     #os.system("sudo poweroff")
     os.system("sudo shutdown -h now")
+
+def off_pressed():
+    # start playing
+    melting.play(loops=holdTime/melting.get_length())
+
+def off_released():
+    # stop playing if released early
+    melting.stop()
 
 def press_laser():
     # start playing
@@ -51,6 +62,8 @@ btn1.when_pressed = press_laser
 btn2.when_pressed = press_power
 btn3.when_pressed = press_rpg
 btn4.when_pressed = press_missile
+btnOff.when_pressed = off_pressed
+btnOff.when_released = off_released
 btnOff.when_held = shutdown
 
 pause()
