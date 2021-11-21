@@ -13,4 +13,8 @@ brilliant article her: https://github.com/TonyLHansen/raspberry-pi-safe-off-swit
 and about scheduling with crontab:
 https://www.raspberrypi.org/documentation/linux/usage/cron.md
 
+spacepi.local
+192.168.0.207
+what's the password?
+
 
