@@ -38,11 +38,7 @@ def shutdown():
 def off_pressed():
     # start playing
     # melting.play(loops=holdTime/melting.get_length())
-<<<<<<< HEAD
-    melting.play(loops=3)    
-=======
     melting.play(loops=1)
->>>>>>> a36a37ab2ed1a911c517288bd0f77192834b91d8
 
 def off_released():
     # stop playing if released early
