@@ -13,9 +13,15 @@ laser = Sound("/home/pi/space/wavs/w_laser1.wav")
 power = Sound("/home/pi/space/wavs/w_power.wav") 
 rpg = Sound("/home/pi/space/wavs/w_rpg.wav")
 missile = Sound("/home/pi/space/wavs/w_missile.wav")
-melting = Sound("/home/pi/space/wavs/ImMeltingMelting.ogg")
-nohome = Sound("/home/pi/space/wavs/NoPlaceLikeHome.ogg")
+melting = Sound("/home/pi/space/wavs/w1_self_destruct_30s.ogg")
+nohome = Sound("/home/pi/space/wavs/w1_system_shut_down.ogg")
+# new sounds 2021 - w1 prefix
+weapons = Sound("/home/pi/space/wavs/w1_sci_fi_weapons.ogg")
+binary = Sound("/home/pi/space/wavs/w1_binary_code.ogg")
+shields = Sound("/home/pi/space/wavs/w1_shield_up_red_alert.wav")
 
+# holdTime = 6 - this worked with the ImMelting sound, the self destruct sequence is longer, might have to be cut
+# holdTime = 73 - this keeps the proportion, but is too long as it is also used to set the time for "when_held"
 holdTime = 6
 offGPIO = 3
 
@@ -32,7 +38,11 @@ def shutdown():
 def off_pressed():
     # start playing
     # melting.play(loops=holdTime/melting.get_length())
+<<<<<<< HEAD
     melting.play(loops=3)    
+=======
+    melting.play(loops=1)
+>>>>>>> a36a37ab2ed1a911c517288bd0f77192834b91d8
 
 def off_released():
     # stop playing if released early
