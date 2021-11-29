@@ -9,12 +9,12 @@ pygame.mixer.pre_init(16000, -16, 2, 2048)
 pygame.mixer.init()
 pygame.mixer.music.set_volume(0.5)
 
-laser = Sound("/home/pi/space/wavs/w_laser1.wav")
+laser = Sound("/home/pi/space/wavs/w2_weapons.ogg")
 power = Sound("/home/pi/space/wavs/w_power.wav") 
 rpg = Sound("/home/pi/space/wavs/w_rpg.wav")
 missile = Sound("/home/pi/space/wavs/w_missile.wav")
 melting = Sound("/home/pi/space/wavs/ImMeltingMelting.ogg")
-nohome = Sound("/home/pi/space/wavs/NoPlaceLikeHome.ogg")
+nohome = Sound("/home/pi/space/wavs/w1_system_shut_down.ogg")
 
 holdTime = 6
 offGPIO = 3

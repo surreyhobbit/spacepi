@@ -13,6 +13,12 @@ It is also reachable using ssh via spacepi.local
 Youtube Sound Response:
 * https://www.youtube.com/channel/UC2FLOcV3S6LspWhJdEaflwQ
 
+Download to mp3:
+https://ytmp3.cc/uu6cc/
+
+Convert to wav or ogg:
+https://convertio.co/download/0c0870ae67efb4cbc606224847ac488517ef05/
+
 
 ## Shutdown :
 1. shutdown with a button together with playing sounds using pygame mixer
