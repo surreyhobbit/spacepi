@@ -10,11 +10,12 @@ pygame.mixer.init()
 pygame.mixer.music.set_volume(0.5)
 
 laser = Sound("/home/pi/space/wavs/w2_weapons.ogg")
-power = Sound("/home/pi/space/wavs/w_power.wav") 
+#power = Sound("/home/pi/space/wavs/w_power.wav") 
 rpg = Sound("/home/pi/space/wavs/w_rpg.wav")
 missile = Sound("/home/pi/space/wavs/w_missile.wav")
-melting = Sound("/home/pi/space/wavs/ImMeltingMelting.ogg")
+melting = Sound("/home/pi/space/wavs/w2_self_destruct_short.ogg")
 nohome = Sound("/home/pi/space/wavs/w1_system_shut_down.ogg")
+shields = Sound("/home/pi/space/wavs/w1_shields_up_red_alert.wav")
 
 holdTime = 6
 offGPIO = 3
@@ -42,9 +43,13 @@ def press_laser():
     # start playing
     laser.play()
 
-def press_power():
+#def press_power():
     # start playing
-    power.play()
+#    power.play()
+
+def press_shields():
+    #start playing
+    shields.play()
 
 def press_rpg():
     rpg.play()
@@ -60,7 +65,7 @@ btn4 = Button(24)
 btnOff = Button(offGPIO, hold_time=holdTime)
 
 btn1.when_pressed = press_laser
-btn2.when_pressed = press_power
+btn2.when_pressed = press_shields
 btn3.when_pressed = press_rpg
 btn4.when_pressed = press_missile
 btnOff.when_pressed = off_pressed
