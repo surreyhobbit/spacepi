@@ -62,12 +62,14 @@ btn1 = Button(11)
 btn2 = Button(2)
 btn3 = Button(23)
 btn4 = Button(24)
+btnFire = Button(22)
 btnOff = Button(offGPIO, hold_time=holdTime)
 
 btn1.when_pressed = press_laser
 btn2.when_pressed = press_shields
 btn3.when_pressed = press_rpg
 btn4.when_pressed = press_missile
+btnFire.when_pressed = press_laser
 btnOff.when_pressed = off_pressed
 btnOff.when_released = off_released
 btnOff.when_held = shutdown
