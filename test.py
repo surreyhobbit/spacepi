@@ -4,12 +4,14 @@ from gpiozero import Button
 from signal import pause
 import time, os
 
-pygame.mixer.pre_init(16000, -16, 2, 2048)
+pygame.mixer.pre_init(44100, -16, 2, 2048)
 
 pygame.mixer.init()
 pygame.mixer.music.set_volume(0.5)
 
-laser = Sound("/home/pi/space/wavs/w2_weapons.ogg")
+laser = Sound("/home/pi/space/wavs/w_laser1.wav")
+weapons = Sound("/home/pi/space/wavs/w2_weapons.ogg")
+vector = Sound("/home/pi/space/wavs/w_vector.wav")
 #power = Sound("/home/pi/space/wavs/w_power.wav") 
 rpg = Sound("/home/pi/space/wavs/w_rpg.wav")
 missile = Sound("/home/pi/space/wavs/w_missile.wav")
@@ -43,6 +45,9 @@ def press_laser():
     # start playing
     laser.play()
 
+def press_weapon():
+    weapons.play()
+
 #def press_power():
     # start playing
 #    power.play()
@@ -57,7 +62,6 @@ def press_rpg():
 def press_missile():
     missile.play()
 
-
 btn1 = Button(11)
 btn2 = Button(2)
 btn3 = Button(23)
@@ -69,10 +73,12 @@ btn1.when_pressed = press_laser
 btn2.when_pressed = press_shields
 btn3.when_pressed = press_rpg
 btn4.when_pressed = press_missile
-btnFire.when_pressed = press_laser
+btnFire.when_pressed = press_weapon
 btnOff.when_pressed = off_pressed
 btnOff.when_released = off_released
 btnOff.when_held = shutdown
+
+vector.play()
 
 pause()
 
